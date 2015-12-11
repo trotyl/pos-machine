@@ -53,4 +53,16 @@ public class DiscountParserTest {
         assertThat(discounts.get(1).getBarcode(), is("ITEM000005"));
         assertThat(discounts.get(1).getDiscount(), is(90.625));
     }
+
+    @Test
+    public void parse_should_have_proper_result_with_invalid_inputs() {
+
+        List<String> inputs = asList("ITEM000001:75", "90:ITEM000005");
+
+        List<Discount> discounts = parser.parse(inputs);
+
+        assertThat(discounts.size(), is(1));
+        assertThat(discounts.get(0).getBarcode(), is("ITEM000001"));
+        assertThat(discounts.get(0).getDiscount(), is(75.0));
+    }
 }
