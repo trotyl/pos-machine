@@ -28,6 +28,7 @@ public class ItemParserTest {
 
     @Test
     public void parse_should_have_proper_result() {
+
         List<String> inputs = asList("ITEM000001:40", "ITEM000003:50", "ITEM000005:60");
 
         List<Item> items = parser.parse(inputs);
