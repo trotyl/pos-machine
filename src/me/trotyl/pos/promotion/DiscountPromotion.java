@@ -1,10 +1,13 @@
 package me.trotyl.pos.promotion;
 
 
+import me.trotyl.pos.model.CartItem;
 import me.trotyl.pos.model.Discount;
-import me.trotyl.pos.model.Item;
+import me.trotyl.pos.unknown.Rebate;
+import org.javatuples.Pair;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,19 +23,19 @@ public class DiscountPromotion extends Promotion {
     }
 
     @Override
-    public List<Item> apply(List<Item> items) {
+    public Pair<List<CartItem>, List<Rebate>> apply(List<CartItem> items) {
 
-        List<Item> results = new ArrayList<>();
+        List<CartItem> results = new ArrayList<>();
 
-        for (Item item : items) {
+        for (CartItem item : items) {
             if (discountMap.containsKey(item.getBarcode())) {
                 Double discount = discountMap.get(item.getBarcode());
-                results.add(new Item(item.getBarcode(), item.getPrice() * discount / 100));
+                results.add(new CartItem(item.getBarcode(), item.getPrice() * discount / 100, item.getAmount()));
             } else {
                 results.add(item);
             }
         }
 
-        return results;
+        return new Pair<>(results, Collections.emptyList());
     }
 }
