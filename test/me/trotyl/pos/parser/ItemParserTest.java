@@ -41,4 +41,18 @@ public class ItemParserTest {
         assertThat(items.get(2).getBarcode(), is("ITEM000005"));
         assertThat(items.get(2).getPrice(), is(60.0));
     }
+
+    @Test
+    public void parse_should_have_proper_result_with_invalid_inputs() {
+
+        List<String> inputs = asList("ITEM000001:40", "50:ITEM000003", "ITEM000005:60");
+
+        List<Item> items = parser.parse(inputs);
+
+        assertThat(items.size(), is(2));
+        assertThat(items.get(0).getBarcode(), is("ITEM000001"));
+        assertThat(items.get(0).getPrice(), is(40.0));
+        assertThat(items.get(1).getBarcode(), is("ITEM000005"));
+        assertThat(items.get(1).getPrice(), is(60.0));
+    }
 }
