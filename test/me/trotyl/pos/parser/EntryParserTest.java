@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -40,5 +41,17 @@ public class EntryParserTest {
         assertThat(items.get(1).getAmount(), is(2));
         assertThat(items.get(2).getBarcode(), is("ITEM000005"));
         assertThat(items.get(2).getAmount(), is(2));
+    }
+
+    @Test
+    public void parse_should_have_proper_result_for_no_hyphen() {
+
+        List<String> inputs = Collections.singletonList("ITEM000001");
+
+        List<Entry> items = parser.parse(inputs);
+
+        assertThat(items.size(), is(1));
+        assertThat(items.get(0).getBarcode(), is("ITEM000001"));
+        assertThat(items.get(0).getAmount(), is(1));
     }
 }
