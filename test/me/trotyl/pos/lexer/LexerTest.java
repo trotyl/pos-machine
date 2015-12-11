@@ -93,4 +93,15 @@ public class LexerTest {
 
         assertThat(results.size(), is(0));
     }
+
+    @Test
+    public void parse_should_have_proper_result_with_empty_string() {
+
+        String inputString = "";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
+
+        List<String> results = lexer.parse(inputStream);
+
+        assertThat(results.size(), is(0));
+    }
 }
