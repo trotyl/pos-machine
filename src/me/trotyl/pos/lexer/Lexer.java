@@ -14,7 +14,10 @@ public class Lexer {
         Scanner scanner = new Scanner(in);
 
         while (scanner.hasNextLine()) {
-            list.add(scanner.nextLine());
+            String line = scanner.nextLine();
+            if (!line.isEmpty()) {
+                list.add(line);
+            }
         }
 
         return list;

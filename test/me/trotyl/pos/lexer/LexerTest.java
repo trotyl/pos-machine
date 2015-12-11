@@ -54,4 +54,18 @@ public class LexerTest {
         assertThat(results.get(1), is("ITEM000003:50"));
         assertThat(results.get(2), is("ITEM000005:60"));
     }
+
+    @Test
+    public void parse_should_have_proper_result_with_tailing_LFs() {
+
+        String inputString = format("ITEM000001:40%nITEM000003:50%nITEM000005:60%n%n%n");
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(inputString.getBytes());
+
+        List<String> results = lexer.parse(inputStream);
+
+        assertThat(results.size(), is(3));
+        assertThat(results.get(0), is("ITEM000001:40"));
+        assertThat(results.get(1), is("ITEM000003:50"));
+        assertThat(results.get(2), is("ITEM000005:60"));
+    }
 }
