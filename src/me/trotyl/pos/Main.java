@@ -1,4 +1,4 @@
-package me.trotyl;
+package me.trotyl.pos;
 
 public class Main {
 
