@@ -1,5 +1,7 @@
-package me.trotyl.pos.model;
+package me.trotyl.pos.unknown;
 
+
+import me.trotyl.pos.model.Item;
 
 public class CartItem extends Item {
 

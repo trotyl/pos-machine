@@ -1,6 +1,6 @@
 package me.trotyl.pos.promotion;
 
-import me.trotyl.pos.model.CartItem;
+import me.trotyl.pos.unknown.CartItem;
 import me.trotyl.pos.unknown.Rebate;
 import org.javatuples.Pair;
 
