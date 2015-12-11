@@ -17,7 +17,7 @@ public class ItemParser extends Parser<Item> {
     }
 
     @Override
-    public Item parseLine(String line) {
+    protected Item parseLine(String line) {
 
         String[] splitString = line.split(":");
         String barcode = splitString[0];

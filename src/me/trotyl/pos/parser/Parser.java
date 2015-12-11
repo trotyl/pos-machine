@@ -18,5 +18,5 @@ public abstract class Parser<T> {
 
     protected abstract Pattern getPattern();
 
-    public abstract T parseLine(String line);
+    protected abstract T parseLine(String line);
 }

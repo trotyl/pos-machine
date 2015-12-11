@@ -44,6 +44,22 @@ public class ItemParserTest {
     }
 
     @Test
+    public void parse_should_have_proper_result_with_floating_price() {
+
+        List<String> inputs = asList("ITEM000001:40.5", "ITEM000003:50.25", "ITEM000005:60.75");
+
+        List<Item> items = parser.parse(inputs);
+
+        assertThat(items.size(), is(3));
+        assertThat(items.get(0).getBarcode(), is("ITEM000001"));
+        assertThat(items.get(0).getPrice(), is(40.5));
+        assertThat(items.get(1).getBarcode(), is("ITEM000003"));
+        assertThat(items.get(1).getPrice(), is(50.25));
+        assertThat(items.get(2).getBarcode(), is("ITEM000005"));
+        assertThat(items.get(2).getPrice(), is(60.75));
+    }
+
+    @Test
     public void parse_should_have_proper_result_with_invalid_inputs() {
 
         List<String> inputs = asList("ITEM000001:40", "50:ITEM000003", "ITEM000005:60");
