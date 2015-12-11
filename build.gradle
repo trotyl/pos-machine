@@ -32,6 +32,8 @@ dependencies {
     testCompile 'org.mockito:mockito-core:1.+'
 }
 
+sourceCompatibility = '1.9'
+
 sourceSets {
     main {
         java {
