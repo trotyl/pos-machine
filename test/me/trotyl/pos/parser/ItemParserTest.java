@@ -5,6 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -54,5 +55,15 @@ public class ItemParserTest {
         assertThat(items.get(0).getPrice(), is(40.0));
         assertThat(items.get(1).getBarcode(), is("ITEM000005"));
         assertThat(items.get(1).getPrice(), is(60.0));
+    }
+
+    @Test
+    public void parse_should_have_proper_result_with_empty_inputs() {
+
+        List<String> inputs = Collections.emptyList();
+
+        List<Item> items = parser.parse(inputs);
+
+        assertThat(items.size(), is(0));
     }
 }
