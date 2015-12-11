@@ -39,4 +39,18 @@ public class DiscountParserTest {
         assertThat(discounts.get(1).getBarcode(), is("ITEM000005"));
         assertThat(discounts.get(1).getDiscount(), is(90.0));
     }
+
+    @Test
+    public void parse_should_have_proper_result_with_floating_price() {
+
+        List<String> inputs = asList("ITEM000001:75.125", "ITEM000005:90.625");
+
+        List<Discount> discounts = parser.parse(inputs);
+
+        assertThat(discounts.size(), is(2));
+        assertThat(discounts.get(0).getBarcode(), is("ITEM000001"));
+        assertThat(discounts.get(0).getDiscount(), is(75.125));
+        assertThat(discounts.get(1).getBarcode(), is("ITEM000005"));
+        assertThat(discounts.get(1).getDiscount(), is(90.625));
+    }
 }
