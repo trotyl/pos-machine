@@ -7,6 +7,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -57,5 +58,14 @@ public class SecondHalfPricePromotionTest {
         assertThat(rebates.get(0).getRebate(), is(15.0));
         assertThat(rebates.get(1).getBarcode(), is("ITEM000003"));
         assertThat(rebates.get(1).getRebate(), is(25.0));
+    }
+
+    @Test
+    public void apply_should_have_proper_result_when_empty() {
+
+        Pair<List<CartItem>, List<Rebate>> pair = promotion.apply(Collections.emptyList());
+
+        assertThat(pair.getValue0().size(), is(0));
+        assertThat(pair.getValue1().size(), is(0));
     }
 }

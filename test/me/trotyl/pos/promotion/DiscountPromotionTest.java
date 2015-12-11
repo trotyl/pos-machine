@@ -59,8 +59,8 @@ public class DiscountPromotionTest {
     public void apply_should_have_proper_result_when_empty() {
 
         Pair<List<CartItem>, List<Rebate>> pair = promotion.apply(Collections.emptyList());
-        List<CartItem> appliedItems = pair.getValue0();
 
-        assertThat(appliedItems.size(), is(0));
+        assertThat(pair.getValue0().size(), is(0));
+        assertThat(pair.getValue1().size(), is(0));
     }
 }
