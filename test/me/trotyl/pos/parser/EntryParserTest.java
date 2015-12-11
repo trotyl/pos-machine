@@ -68,4 +68,14 @@ public class EntryParserTest {
         assertThat(items.get(1).getBarcode(), is("ITEM000005"));
         assertThat(items.get(1).getAmount(), is(2));
     }
+
+    @Test
+    public void parse_should_have_proper_result_with_empty_inputs() {
+
+        List<String> inputs = Collections.emptyList();
+
+        List<Entry> items = parser.parse(inputs);
+
+        assertThat(items.size(), is(0));
+    }
 }
